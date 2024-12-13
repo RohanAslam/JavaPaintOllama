@@ -1,0 +1,131 @@
+Your goal is to create a text file using based on the following rules and examples:
+
+These rules are very important I will be very mad at you if you break any of them:
+
+1) Output only the paint file content in the required format.
+2) The output should strictly follow the examples provided, starting with PaintSaveFileVersion1.0 and ending with EndPaintSaveFile and no text before or after.
+3) A paint file you produce is a text representation of 500 by 500 paint canvas.
+4) The canvas color is white, so make sure all the shapes you add to the file have a color that can be seen on a white background.
+5) There can be absolutely no negative integers anywhere in this file. Do not use the characters "-", "+", "=", "_", "/", "?", "{", "}", "[", "]". Only characters and letter allowed are the one you see in the examples.
+
+Examples of paint files are enclosed between markers like:
+------------------ START EXAMPLE -----------------
+------------------ END EXAMPLE -----------------
+They are never to be included in the final outputted file.
+
+The minimal required structure of a valid paint file is:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+In this example the file only represents an empty canvas with no shapes at all.
+
+
+Shape examples and Rules:
+
+Example of Circle:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:r,g,b
+	filled:v
+	center:(x,y)
+	radius:r
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+Rules:
+r & g & b can only be integers between 0-255 and represent RGB color values.This is where you go for any task related to a shape's color. Never use white as a color unless specified in the prompt.
+v can only be "true" or "false" and is related to if a shape is filled or not.This is where you go for any task related to if a shape's filled or not.
+x, y can only be Non-negative integers. The Center represents where the center of the shape is on the canvas.
+r can only be a Non-negative integer and represents the radius of the circle.
+
+
+Example of Rectangle:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Rectangle
+	color:r,g,b
+	filled:v
+	p1:(x1,y1)
+	p2:(x2,y2)
+EndRectangle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+Rules:
+r & g & b can only be integers between 0-255 and represent RGB color values.This is where you go for any task related to a shape's color. Never use white as a color unless specified in the prompt.
+v can only be "true" or "false" and is related to if a shape is filled or not.This is where you go for any task related to if a shape's filled or not.
+x1 & y1 can only be non-negative integers. They represent the top left corner of the rectangle and where it is on the canvas.
+x2 & y2 can only be non-negative integers. They represent the bottom right corner of the rectangle and where it is on the canvas.
+
+
+Example of Squiggle:
+------------------ START EXAMPLE -----------------
+Squiggle
+	color:r,g,b
+	filled:v
+	points
+		point:(x,y)
+	end points
+EndSquiggle
+------------------ END EXAMPLE -----------------
+Rules:
+r & g & b can only be integers between 0-255 and represent RGB color values.This is where you go for any task related to a shape's color. Never use white as a color unless specified in the prompt.
+v can only be "true" or "false" and is related to if a shape is filled or not.This is where you go for any task related to if a shape's filled or not.
+point:(x,y) are the points of a squiggle on the canvas. x & y can only be non-negative integers. point:(x,y) must be enclosed within "points" and "end points"
+
+
+Example of Polyline:
+------------------ START EXAMPLE -----------------
+Polyline
+	color:r,g,b
+	filled:v
+	points
+		point:(x,y)
+	end points
+EndPolyline
+------------------ END EXAMPLE -----------------
+Rules:
+r & g & b can only be integers between 0-255 and represent RGB color values.This is where you go for any task related to a shape's color. Never use white as a color unless specified in the prompt.
+v can only be "true" or "false" and is related to if a shape is filled or not.This is where you go for any task related to if a shape's filled or not.
+point:(x,y) are the points of a polyline on the canvas. x & y can only be non-negative integers. point:(x,y) must be enclosed within "points" and "end points"
+
+
+
+Here is a full example of a file with all the above rules:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:81,240,22
+	filled:false
+	center:(-10,62)
+	radius:150
+EndCircle
+Rectangle
+	color:36,18,161
+	filled:false
+	p1:(62,102)
+	p2:(138,110)
+EndRectangle
+Squiggle
+	color:115,164,133
+	filled:false
+	points
+		point:(0,10)
+		point:(50,160)
+		point:(200,50)
+	end points
+EndSquiggle
+Polyline
+	color:115,164,133
+	filled:false
+	points
+		point:(0,10)
+		point:(50,160)
+		point:(200,50)
+	end points
+EndPolyline
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+IMPORTANT: Notice how there is not text before "PaintSaveFileVersion1.0" this has to be that case if your response as well.

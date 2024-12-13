@@ -1,0 +1,239 @@
+Your Goal:
+To modify a Paint File according to the provided prompt and rules. The output must strictly follow the formatting and structure of a valid Paint File.
+
+Examples of paint files are enclosed between markers like:
+------------------ START EXAMPLE -----------------
+------------------ END EXAMPLE -----------------
+They are never to be included in the final outputted file.
+
+Rules Recap:
+1. Start with `PaintSaveFileVersion1.0`.
+2. End with `EndPaintSaveFile`.
+3. Follow examples and ensure no additional text is output.
+4. Use non-negative integers for coordinates, dimensions, and colors.
+5. Use colors visible against a white background.
+
+How to modify file:
+Here are detailed examples of various modifications you may be asked to make.
+
+1. Add a New Shape
+
+Example Prompt: Add a green unfilled rectangle with top-left corner (50,50) and bottom-right corner (150,150).
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Rectangle
+	color:0,255,0
+	filled:false
+	p1:(50,50)
+	p2:(150,150)
+EndRectangle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+2. Modify an Existing Shape
+
+Example Prompt**: *Change the circle's color to blue and make it filled.
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:255,0,0
+	filled:false
+	center:(100,100)
+	radius:50
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:0,0,255
+	filled:true
+	center:(100,100)
+	radius:50
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+3. Remove a Shape
+
+Prompt: Remove the rectangle from the file.
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Rectangle
+	color:0,255,0
+	filled:false
+	p1:(50,50)
+	p2:(150,150)
+EndRectangle
+Circle
+	color:255,0,0
+	filled:false
+	center:(100,100)
+	radius:50
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:255,0,0
+	filled:false
+	center:(100,100)
+	radius:50
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+4. Replace a Shape
+
+Example Prompt: Replace the squiggle with a red polyline using the same points.
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Squiggle
+	color:115,164,133
+	filled:false
+	points
+		point:(0,10)
+		point:(50,160)
+		point:(200,50)
+	end points
+EndSquiggle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Polyline
+	color:255,0,0
+	filled:false
+	points
+		point:(0,10)
+		point:(50,160)
+		point:(200,50)
+	end points
+EndPolyline
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+5. Add Multiple Shapes
+
+Example Prompt: Add a yellow filled circle at (300,300) with a radius of 30 and a blue unfilled rectangle from (10,10) to (100,100).
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:255,255,0
+	filled:true
+	center:(300,300)
+	radius:30
+EndCircle
+Rectangle
+	color:0,0,255
+	filled:false
+	p1:(10,10)
+	p2:(100,100)
+EndRectangle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+6. Modify a Shape’s Properties
+
+Prompt: Double the circle’s radius and move its center to (200,200).
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:255,0,0
+	filled:true
+	center:(100,100)
+	radius:50
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Circle
+	color:255,0,0
+	filled:true
+	center:(200,200)
+	radius:100
+EndCircle
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+
+7. Add Points to a Shape
+
+Prompt: Add two points (300,300) and (400,400) to the existing polyline.
+
+Initial File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Polyline
+	color:0,255,0
+	filled:false
+	points
+		point:(100,100)
+		point:(200,200)
+	end points
+EndPolyline
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Modified File:
+------------------ START EXAMPLE -----------------
+PaintSaveFileVersion1.0
+Polyline
+	color:0,255,0
+	filled:false
+	points
+		point:(100,100)
+		point:(200,200)
+		point:(300,300)
+		point:(400,400)
+	end points
+EndPolyline
+EndPaintSaveFile
+------------------ END EXAMPLE -----------------
+
+Key Guidelines:
+- Ensure the output is valid and adheres to all formatting and structural rules.
+- Remove, replace, or modify shapes precisely based on the prompt.
+- Verify that all added or changed elements follow their respective rules and avoid any negative integers.
+
